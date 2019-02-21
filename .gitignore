@@ -61,4 +61,4 @@ typings/
 .next
 
 # ignore config with secret
-server/configuration.js
+server/config.js
