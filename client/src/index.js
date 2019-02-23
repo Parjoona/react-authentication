@@ -12,7 +12,11 @@ import reducers from './redux/reducers';
 
 const store = createStore(
   reducers, 
-  {},
+  {
+    auth: {
+      authenticated: localStorage.getItem('tokenFromCourse')
+    }
+  },
   applyMiddleware(thunk))
 
 ReactDOM.render(

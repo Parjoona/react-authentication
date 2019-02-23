@@ -2,12 +2,11 @@ import React, { Component } from 'react'
 import { reduxForm, Field } from 'redux-form'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import * as actions from '../redux/actions'
+import * as actions from '../../redux/actions'
 import { withRouter } from 'react-router-dom';
 
 class Signup extends Component {
   onSubmit = formProps => {
-    console.log(this.props.history)
     this.props.signup(formProps, () => {
       this.props.history.push('/feature')
     })
@@ -18,26 +17,27 @@ class Signup extends Component {
     return (
       <form onSubmit={handleSubmit(this.onSubmit)}>
         <fieldset>
-          <label>Email</label>
+          <legend>Sign up</legend>
+          <label>Email: </label>
           <Field 
             type='text'
             name='email'
             component='input'
             autoComplete='none'
           />
-        </fieldset>
-        <fieldset>
-          <label>Password</label>
+
+          <br/>
+          
+          <label>Password: </label>
           <Field 
           type='password'
           name='password'
           component='input'
           autoComplete='none'
         />
+        {this.props.errorMsg && <p>Error with email or password</p>}
         </fieldset>
-          <div>
-            <p>{this.props.errorMsg}</p>
-          </div>
+        <br/>
         <button>Sign up</button>
       </form>
     )
